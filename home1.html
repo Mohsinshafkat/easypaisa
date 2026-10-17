@@ -36,11 +36,11 @@ body {
     --avatar-size: 38px;
     --avatar-radius: 50%;
     --username-size: 15px;
-    --username-weight: 700;
+    --username-weight: 600;
     --username-color: #1a1a1a;
     --header-actions-gap: 30px;
     --header-actions-margin-right: 24px;
-    --icon-btn-size: 22px;
+    --icon-btn-size: 20px;
 
     /* --- 4. CARDS (SLIDER) GENERAL SETTINGS --- */
     --cards-gap: 12px;
@@ -60,18 +60,19 @@ body {
     --badge-font-size: 11px;
     --badge-font-weight: 600;
     --account-title-size: 16px;
-    --account-title-weight: 600;
-    --account-title-color: #4e4e4e;
+    --account-title-weight: 500;
+    --account-title-color: #353535;
+    --account-title-webkit-text-stroke: 0.4px #353535;
     --account-title-shift-y: -50px; /* Sirf 'easypaisa Account' ko upar shift karne ke liye */
     --global-font-stretch: 100%; /* Font stretch percentage (110%, 115%, 120% try karein) */
     
     /* BALANCE FONT CONTROLS */
     --balance-font-family: var(--main-font);
-    --balance-size: 22px;
-    --balance-weight: 600; /* Aap isey 400 (light/normal), 500 (medium) ya 600 kar sakte hain */
-    --balance-color: #4e4e4e;
+    --balance-size: 24px;
+    --balance-weight: 500; /* Aap isey 400 (light/normal), 500 (medium) ya 600 kar sakte hain */
+    --balance-color: #353535;
     /* --- :ROOT VARIABLES MEIN ADD KAREIN --- */
-  --balance-stroke: 0.6px #4e4e4e; /* Text ko mazeed mota karne ke liye (0.5px, 1px, 1.5px try karein) */
+  --balance-stroke: 1.1px #353535; /* Text ko mazeed mota karne ke liye (0.5px, 1px, 1.5px try karein) */
   --balance-letter-spacing: 1px; /* Digits ke darmiyan gap barhane ke liye (1px, 2px, 3px wagera try karein) */
 
     --hide-balance-size: 15px;
@@ -84,10 +85,10 @@ body {
     --loan-img-size: 55px;
     --loan-title-size: 13px;
     --loan-title-weight: 500;
-    --loan-title-color: #4e4e4e;
-    --loan-amount-size: 22px;
+    --loan-title-color: #353535;
+    --loan-amount-size: 24px;
     --loan-amount-weight: 600;
-    --loan-amount-color: #4e4e4e;
+    --loan-amount-color: #353535;
     --loan-sub-size: 11px;
     --loan-sub-weight: 400;
     --loan-sub-color: #53685d;
@@ -97,10 +98,10 @@ body {
     --card3-bg-2: #4ef0a0;
     --card3-title-size: 13px;
     --card3-title-weight: 500;
-    --card3-title-color: #4e4e4e;
-    --card3-amount-size: 22px;
+    --card3-title-color: #353535 ;
+    --card3-amount-size: 24px;
     --card3-amount-weight: 600;
-    --card3-amount-color: #4e4e4e;
+    --card3-amount-color: #353535;
     --card3-sub-size: 11px;
     --card3-sub-weight: 400;
     --card3-sub-color: #53685d;
@@ -276,6 +277,7 @@ html, body {
   font-size: var(--account-title-size);
   font-weight: var(--account-title-weight);
   color: var(--account-title-color);
+  -webkit-text-stroke: 0.4px var(--account-title-color);
   transform: translateY(var(--account-title-shift-y)); /* Sirf is text ko upar le jayega, balance move nahi hoga */
   display: flex;
   align-items: center;
@@ -295,13 +297,15 @@ html, body {
   gap: 6px;
   margin-bottom: 8px; /* Yahan se space barha sakte hain (e.g., 6px, 10px, 12px wagera try kar lein) */
 }
-  .hide-balance {
+.hide-balance {
     font-size: var(--hide-balance-size);
     font-weight: var(--hide-balance-weight);
     color: var(--hide-balance-color);
-    margin-bottom: -8px; /* Yahan se space barha sakte hain (e.g., 6px, 10px, 12px wagera try kar lein) */
+    margin-bottom: -8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Is se eye icon bilkul right side par fix rahega */
   }
-
   /* Card 2: Loan Card */
   .loan-card {
     min-width: var(--card-min-width);
@@ -327,6 +331,7 @@ html, body {
   font-size: var(--account-title-size);
   font-weight: var(--account-title-weight);
   color: var(--loan-title-color);
+  -webkit-text-stroke: var(--account-title-webkit-text-stroke);
   transform: translateY(-23px);
   display: flex;
   align-items: center;
@@ -370,6 +375,7 @@ html, body {
   font-size: var(--account-title-size);
   font-weight: var(--account-title-weight);
   color: var(--card3-title-color);
+  -webkit-text-stroke: var(--account-title-webkit-text-stroke);
   transform: translateY(var(--account-title-shift-y)); /* Yeh line yahan bhi add karni hai */
 }
 
@@ -458,6 +464,32 @@ html, body {
     display: block;
     object-fit: contain;
   }
+
+/* Balance ke sath wala plus icon */
+  .balance-icon-img {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+      transform: translateY(-1.5px);
+      margin-left: 4px;
+  }
+
+  /* Hide balance wala eye icon */
+  .hide-icon-img {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+      transform: translateY(1px) translateX(-96px);
+  }
+
+  /* Account title ke sath wala down arrow icon */
+  .account-title-img {
+      width: 14px;
+      height: 14px;
+      object-fit: contain;
+      margin-left: 1px;
+      transform: translateY(-1px);
+  }
 </style>
 </head>
 <body>
@@ -490,9 +522,9 @@ html, body {
         <span class="upgrade-badge">Upgrade</span>
       </div>
       <div>
-        <div class="account-title">easypaisa Account ▾</div>
-        <div class="balance-amount">Rs. 7,009.58 ⊕</div>
-        <div class="hide-balance">Hide Balance 👁</div>
+        <div class="account-title">easypaisa Account <img src="ardn.png" class="account-title-img" alt="ardn"></div>
+          <div class="balance-amount">Rs. 7,009.58 <img src="add.png" class="balance-icon-img" alt="Add"></div>
+          <div class="hide-balance"><span>Hide Balance</span> <img src="eye.png" class="hide-icon-img" alt="Eye"></div>
       </div>
     </div>
 
