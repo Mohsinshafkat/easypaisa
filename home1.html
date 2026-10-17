@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Easypaisa Clone - Manual Settings</title>
+<style>
+  /* Local Font Definition: SFPRODISPLAYREGULAR.OTF */
+@font-face {
+    font-family: 'Inter Custom';
+    src: url('Inter_24pt-Medium.ttf') format('truetype'); /* Agar font kisi folder ke andar hai toh path theek karein, jese 'fonts/Inter_24pt-Medium.ttf' */
+    font-weight: 500; /* Medium weight */
+    font-style: normal;
+}
+
+body {
+    font-family: 'Inter Custom', sans-serif;
+}
+
+  /* ==========================================================================
+     HAR EK CHEEZ KI MANUAL SETTINGS (:ROOT VARIABLES)
+     Tamam colors strictly HEX (#RRGGBB) format mein hain
+     ========================================================================== */
+  :root {
+    /* --- 1. GLOBAL FONT SETTINGS --- */
+    --main-font: 'Inter Custom', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    
+    /* --- 2. APP CONTAINER & BACKGROUND --- */
+    --app-bg-color: #f5f5f5;
+    --container-max-width: 450px;
+    --container-padding: 12px 18px;
+    --container-gap: 10px;
+
+    /* --- 3. HEADER SECTION SETTINGS --- */
+    --header-height: 40px;
+    --avatar-size: 38px;
+    --avatar-radius: 50%;
+    --username-size: 15px;
+    --username-weight: 700;
+    --username-color: #1a1a1a;
+    --header-actions-gap: 30px;
+    --header-actions-margin-right: 24px;
+    --icon-btn-size: 22px;
+
+    /* --- 4. CARDS (SLIDER) GENERAL SETTINGS --- */
+    --cards-gap: 12px;
+    --card-min-width: 73%;
+    --card-height: 250px;
+    --card-border-radius: 15px;
+    --card-padding: 24px;
+    --card-shadow-color: #000000;
+
+    /* --- 5. CARD 1 (ACCOUNT BALANCE CARD) - ALL HEX COLORS --- */
+    --card1-bg-1: #b0fdb5;
+    --card1-bg-2: #8edab3;
+    --wallet-icon-width: 61px;
+    --wallet-icon-height: 64px;
+    --badge-bg: #65a882;
+    --badge-color: #fdfdfd;
+    --badge-font-size: 11px;
+    --badge-font-weight: 600;
+    --account-title-size: 16px;
+    --account-title-weight: 600;
+    --account-title-color: #4e4e4e;
+    --account-title-shift-y: -50px; /* Sirf 'easypaisa Account' ko upar shift karne ke liye */
+    --global-font-stretch: 100%; /* Font stretch percentage (110%, 115%, 120% try karein) */
+    
+    /* BALANCE FONT CONTROLS */
+    --balance-font-family: var(--main-font);
+    --balance-size: 22px;
+    --balance-weight: 600; /* Aap isey 400 (light/normal), 500 (medium) ya 600 kar sakte hain */
+    --balance-color: #4e4e4e;
+    /* --- :ROOT VARIABLES MEIN ADD KAREIN --- */
+  --balance-stroke: 0.6px #4e4e4e; /* Text ko mazeed mota karne ke liye (0.5px, 1px, 1.5px try karein) */
+  --balance-letter-spacing: 1px; /* Digits ke darmiyan gap barhane ke liye (1px, 2px, 3px wagera try karein) */
+
+    --hide-balance-size: 15px;
+    --hide-balance-weight: 400;
+    --hide-balance-color: #53685d;
+
+    /* --- 6. CARD 2 (LOAN CARD) - ALL HEX COLORS --- */
+    --card2-bg-1: #fff0b6;
+    --card2-bg-2: #e5ce62;
+    --loan-img-size: 55px;
+    --loan-title-size: 13px;
+    --loan-title-weight: 500;
+    --loan-title-color: #4e4e4e;
+    --loan-amount-size: 22px;
+    --loan-amount-weight: 600;
+    --loan-amount-color: #4e4e4e;
+    --loan-sub-size: 11px;
+    --loan-sub-weight: 400;
+    --loan-sub-color: #53685d;
+
+    /* --- 7. CARD 3 (DEBIT & CREDIT CARD) - ALL HEX COLORS --- */
+    --card3-bg-1: #dffeee;
+    --card3-bg-2: #4ef0a0;
+    --card3-title-size: 13px;
+    --card3-title-weight: 500;
+    --card3-title-color: #4e4e4e;
+    --card3-amount-size: 22px;
+    --card3-amount-weight: 600;
+    --card3-amount-color: #4e4e4e;
+    --card3-sub-size: 11px;
+    --card3-sub-weight: 400;
+    --card3-sub-color: #53685d;
+
+    /* --- 8. SERVICES GRID SECTION - ALL HEX COLORS --- */
+    --section-heading-size: 15px;
+    --section-heading-weight: 600;
+    --section-heading-color: #222222;
+    --grid-gap: 8px;
+    --grid-max-height: 237px;
+    --pagination-dot-size: 8px;
+    --pagination-dot-inactive: #d1d1d1;
+    --pagination-dot-active: #00b969;
+
+    /* --- 9. BOTTOM NAVIGATION BAR - ALL HEX COLORS --- */
+    --navbar-height: 52px;
+    --navbar-bg: #ffffff;
+    --navbar-border-color: #eaeaea;
+    --navbar-active-color: #00b969;
+    --navbar-inactive-color: #666666;
+    --navbar-font-size: 10px;
+    --navbar-font-weight: 500;
+    --home-indicator-width: 12px;
+    --home-indicator-height: 3px;
+    --home-indicator-color: #00b969;
+  }
+
+  * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--main-font);
+  font-stretch: var(--global-font-stretch);
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden; /* Pehle yahan 'hidden' tha, ab 'auto' kar dein */
+  background-color: var(--app-bg-color);
+}
+  .mobile-container {
+    width: 100vw;
+    min-height: 100vh;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    background-color: var(--app-bg-color);
+    padding: var(--container-padding);
+    gap: var(--container-gap);
+  }
+
+  /* Header Section */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-height);
+    flex-shrink: 0;
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .avatar {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: var(--avatar-radius);
+  object-fit: cover;
+  margin-left: 14px; /* Apni marzi ke mutabiq value kam ya zyada kar sakte hain (e.g., 5px, 15px) */
+}
+
+  .username {
+    font-size: var(--username-size);
+    font-weight: var(--username-weight);
+    color: var(--username-color);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--header-actions-gap);
+    margin-right: var(--header-actions-margin-right);
+  }
+
+  .text-element {
+    font-family: 'Inter Custom', sans-serif;
+    display: inline-block;
+    transform: scaleX(1.4); /* Yahan 1.4 ka matlab 140% stretch hai. Agar kam ya zyada karna ho toh value change kar sakte hain (jaise 1.15) */
+}
+
+  .icon-btn {
+    width: var(--icon-btn-size);
+    height: var(--icon-btn-size);
+    object-fit: contain;
+  }
+
+  /* Search Bar */
+.search-container {
+  width: 95%;
+  margin: 0 auto;        /* Is se container screen ke bilkul center mein aa jaye ga */
+  display: flex;         /* Flexbox enable karein */
+  justify-content: center;/* Image ko horizontally center kare ga */
+  flex-shrink: 0;
+}
+
+  .search-bar-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  /* Main Account Cards Carousel */
+  .cards-wrapper {
+    display: flex;
+    gap: var(--cards-gap);
+    overflow-x: auto;
+    scrollbar-width: none;
+    flex-shrink: 0;
+    scroll-snap-type: x mandatory;
+  }
+
+  .cards-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Card 1: Account Balance */
+  .account-card {
+    min-width: var(--card-min-width);
+    height: var(--card-height);
+    background: linear-gradient(145deg, var(--card1-bg-1) 0%, var(--card1-bg-2) 100%);
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    box-shadow: 0px 2px 8px #00000010;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .wallet-icon {
+    width: var(--wallet-icon-width);
+    height: var(--wallet-icon-height);
+    object-fit: contain;
+  }
+
+  .upgrade-badge {
+    background-color: var(--badge-bg);
+    color: var(--badge-color);
+    font-size: var(--badge-font-size);
+    font-weight: var(--badge-font-weight);
+    padding: 5px 14px;
+    border-radius: 20px;
+  }
+
+.account-title {
+  font-size: var(--account-title-size);
+  font-weight: var(--account-title-weight);
+  color: var(--account-title-color);
+  transform: translateY(var(--account-title-shift-y)); /* Sirf is text ko upar le jayega, balance move nahi hoga */
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+  /* Balance Class Fixed */
+.balance-amount {
+  font-family: var(--balance-font) !important;
+  font-size: var(--balance-size) !important;
+  font-weight: var(--balance-weight) !important;
+  color: var(--balance-color) !important;
+  -webkit-text-stroke: var(--balance-stroke) !important;
+  letter-spacing: var(--balance-letter-spacing) !important; /* Digits Gap Control */
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px; /* Yahan se space barha sakte hain (e.g., 6px, 10px, 12px wagera try kar lein) */
+}
+  .hide-balance {
+    font-size: var(--hide-balance-size);
+    font-weight: var(--hide-balance-weight);
+    color: var(--hide-balance-color);
+    margin-bottom: -8px; /* Yahan se space barha sakte hain (e.g., 6px, 10px, 12px wagera try kar lein) */
+  }
+
+  /* Card 2: Loan Card */
+  .loan-card {
+    min-width: var(--card-min-width);
+    height: var(--card-height);
+    background: linear-gradient(120deg, var(--card2-bg-1) 0%, var(--card2-bg-2) 100%);
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    box-shadow: 0px 2px 8px #00000010;
+  }
+
+  .loan-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+.loan-title {
+  font-size: var(--account-title-size);
+  font-weight: var(--account-title-weight);
+  color: var(--loan-title-color);
+  transform: translateY(-23px);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.loan-amount {
+  font-family: var(--balance-font);
+  font-size: var(--balance-size); /* 25px (Card 1 balance size) */
+  font-weight: var(--balance-weight); /* 600 */
+  color: var(--loan-amount-color);
+  -webkit-text-stroke: var(--balance-stroke);
+  letter-spacing: var(--balance-letter-spacing);
+  line-height: 1.2;
+  margin-bottom: 8px; /* Yahan se space barha sakte hain (e.g., 6px, 10px, 12px wagera try kar lein) */
+}
+
+.loan-sub {
+  font-size: var(--hide-balance-size); /* 10px (Card 1 sub size) */
+  font-weight: var(--hide-balance-weight); /* 500 */
+  color: var(--loan-sub-color);
+  margin-bottom: -8px; /* Yahan se space barha sakte hain (e.g., 6px, 10px, 12px wagera try kar lein) */
+}
+
+  /* Card 3: Debit & Credit Card */
+  .debit-card {
+    min-width: var(--card-min-width);
+    height: var(--card-height);
+    background: linear-gradient(145deg, var(--card3-bg-1) 0%, var(--card3-bg-2) 100%);
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    box-shadow: 0px 2px 8px #00000010;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+
+.debit-title {
+  font-size: var(--account-title-size);
+  font-weight: var(--account-title-weight);
+  color: var(--card3-title-color);
+  transform: translateY(var(--account-title-shift-y)); /* Yeh line yahan bhi add karni hai */
+}
+
+.debit-amount {
+  font-family: var(--balance-font);
+  font-size: var(--balance-size); /* 25px */
+  font-weight: var(--balance-weight); /* 600 */
+  color: var(--card3-amount-color);
+  -webkit-text-stroke: var(--balance-stroke);
+  letter-spacing: var(--balance-letter-spacing);
+  margin-bottom: 8px; /* Yahan se space barha sakte hain (e.g., 6px, 10px, 12px wagera try kar lein) */
+}
+
+.debit-sub {
+  font-size: var(--hide-balance-size); /* 10px */
+  font-weight: var(--hide-balance-weight); /* 500 */
+  color: var(--card3-sub-color);
+  margin-bottom: -8px; /* Yahan se space barha sakte hain (e.g., 6px, 10px, 12px wagera try kar lein) */
+}
+
+  /* Services Section */
+  .services-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex-grow: 1;
+  }
+
+  .section-heading {
+    font-size: var(--section-heading-size);
+    font-weight: var(--section-heading-weight);
+    color: var(--section-heading-color);
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: var(--grid-gap);
+    flex-grow: 1;
+    max-height: var(--grid-max-height);
+  }
+
+  .service-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .pagination-dots {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 45px;
+  }
+
+  .dot {
+    width: var(--pagination-dot-size);
+    height: var(--pagination-dot-size);
+    border-radius: 50%;
+    background-color: var(--pagination-dot-inactive);
+  }
+
+  .dot.active {
+    background-color: var(--pagination-dot-active);
+  }
+
+  /* Bottom Navigation */
+/* Bottom Navigation Bar with Image */
+  .bottom-navbar {
+    position: fixed;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: var(--container-max-width);
+    height: auto;
+    z-index: 1000;
+    background-color: var(--navbar-bg);
+  }
+
+  .bnb-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+</style>
+</head>
+<body>
+
+<div class="mobile-container">
+  
+  <!-- Header -->
+  <div class="header">
+    <div class="user-info">
+      <img src="avatar.jpeg" class="avatar" alt="User Profile">
+      <span class="username">Hey There 👋</span>
+    </div>
+    <div class="header-actions">
+      <img src="bell.png" class="icon-btn" alt="Notification">
+      <img src="exit.png" class="icon-btn" alt="Exit">
+    </div>
+  </div>
+
+  <!-- Search Bar Asset -->
+  <div class="search-container">
+    <img src="bar.png" alt="Search or Ask Ello" class="search-bar-img">
+  </div>
+
+  <!-- Account & Cards Carousel (3 Boxes) -->
+  <div class="cards-wrapper">
+    <!-- Box 1: Account Balance -->
+    <div class="account-card">
+      <div class="card-top">
+        <img src="card1.png" class="wallet-icon" alt="Wallet Icon">
+        <span class="upgrade-badge">Upgrade</span>
+      </div>
+      <div>
+        <div class="account-title">easypaisa Account ▾</div>
+        <div class="balance-amount">Rs. 7,009.58 ⊕</div>
+        <div class="hide-balance">Hide Balance 👁</div>
+      </div>
+    </div>
+
+    <!-- Box 2: Get up to Rs. 50,000 -->
+    <div class="loan-card">
+      <div class="loan-top">
+        <img src="card2.png" class="wallet-icon" alt="Borrow Money">
+      </div>
+      <div>
+        <div class="loan-title">Borrow Money</div>
+        <div class="loan-amount">Get up to Rs.<br>50,000</div>
+        <div class="loan-sub">Instant loan with easycash</div>
+      </div>
+    </div>
+
+    <!-- Box 3: Get your Card -->
+    <div class="debit-card">
+      <div class="card-top">
+        <img src="card3.png" class="wallet-icon" alt="Card Icon">
+      </div>
+      <div>
+        <div class="debit-title">Debit & Credit Card</div>
+        <div class="debit-amount">Get your Card</div>
+        <div class="debit-sub">Tap to explore and apply</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services 3x3 Grid -->
+  <div class="services-section">
+    <span class="section-heading">More with easypaisa</span>
+    
+    <div class="grid-container">
+      <img src="Send.png" alt="Send Money" class="service-img">
+      <img src="Bill.png" alt="Bill Payment" class="service-img">
+      <img src="Load.png" alt="Loads & Packages" class="service-img">
+      <img src="Enter.png" alt="Enter and Win" class="service-img">
+      <img src="Easy.png" alt="Easycash" class="service-img">
+      <img src="Term.png" alt="Term Deposit" class="service-img">
+      <img src="Insurance.png" alt="Insurance" class="service-img">
+      <img src="Rs.png" alt="Rs. 1 Game" class="service-img">
+      <img src="See.png" alt="See All" class="service-img">
+    </div>
+
+    <div class="pagination-dots">
+      <div class="dot active"></div>
+      <div class="dot"></div>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation Bar -->
+<!-- Bottom Navigation Bar -->
+  <div class="bottom-navbar">
+    <img src="bnb.jfif" alt="Bottom Navigation" class="bnb-img">
+  </div>
+
+</div>
+
+</body>
+</html>
